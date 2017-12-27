@@ -1,21 +1,16 @@
 // posts array
 var posts = [];
 // starting post id
-var postid = 1;
+var postid = 0;
 
-// when we click add it gets the text + assign unique id then push it to array + post on site)
+// when we click "add" -> get the text + assign unique id then push it to array -> post on site)
 $('.add-post').click(function() {
     newPost = {text: $('#post-name').val(), id: postid++}
     posts.push(newPost)
-    renderPost()
+    resetList()
 })
 
-function renderPost() {
-   postid--;
-    $('.posts').append('<p class="post" data-id=' + postid +'>' + '<button type="button" class="remove">' + 'REMOVE' + '</button>' + newPost.text + '</p>')
-    postid++;
-}
-
+// function to empty posts and rerender again.
 function resetList() {
     $('.posts').empty();
     for(var i = 0; i < posts.length; i++) {
@@ -23,14 +18,17 @@ function resetList() {
     }
 }
 
+// when click remove for one post -> delete it and render
+
+
 $('.posts').on('click','.remove', function() {
-    $(this).parent.data(i).remove;
-})
 
-/*
-<p class="post" data-id="1"> <button type="button" class="remove">REMOVE</button> Hey man! I'm a post!</p>
-    $('this').parents('p').remove();
-    posts.splice(this.data,1)
+    removeItemNum = $(this).parent().data();
+    
+    for(var i = 0; i < posts.length; i++) {
+        if(removeItemNum.id == posts[i].id) {
+        posts.splice(i,1);
+        resetList()
+    }}}
+)
 
-
-*/
