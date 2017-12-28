@@ -12,12 +12,10 @@ function findPost(id) {
         }}}
 
 // function to generate comments html
-
 function addComment(i) {
     for(var j = 0; j < posts[i].comments.length; j++) {
-        '<ul>' +
-            '<li>' + 'username: ' + posts[i].comments[j].username + 'post:' + posts[i].comments[j].post + '</li>' + 
-        '</ul>'
+        '<li>' + 'username: ' + posts[i].comments.username[j] + ' post: ' 
+        + posts[i].comments.post[j] + '</li>' 
     }
 }
 
@@ -32,8 +30,8 @@ function resetList() {
     "Username: " + '<input type="text" name="username" id="username">' + 
     "Comment" + '<input type="text" name="comment" id="comment">'
     +
-    '<button type="button" class="add-comment">' + 'Comment' + '</button>' + '</p>'
-    // + addComment(i)
+    '<button type="button" class="add-comment">' + 'Comment' + '</button>'  +
+     '</p>'
     )
     }
 }
@@ -56,12 +54,11 @@ $('.posts').on('click','.remove', function() {
 })
 
 
-
 // On click of comment button -> get values -> push to array -> render !
 $('.posts').on('click','.add-comment', function(){
     postIsFrom = $(this).closest('p').data().id;   
-    lastComment = ({post: $('#comment').val(), username: $('#username').val()});            
+    lastComment = ({post: $(this).closest('p').find('#comment').val(), username: $(this).closest('p').find('#username').val()});            
     findPost(postIsFrom).comments.push(lastComment)
+    resetList()    
         }       
 )
-
