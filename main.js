@@ -1,14 +1,25 @@
 // posts array
 var posts = [];
+
 // starting post id
 var postid = 0;
 
-// when we click "add" -> get the text + assign unique id then push it to array -> post on site)
-$('.add-post').click(function() {
-    newPost = {text: $('#post-name').val(), id: postid++};
-    posts.push(newPost);
-    resetList()
-})
+// find post function
+function findPost(id) {
+    for (var i = 0; i < posts.length; i++) {
+        if(postIsFrom == [posts[i].id]){
+            return posts[id]
+        }}}
+
+// function to generate comments html
+
+function addComment(i) {
+    for(var j = 0; j < posts[i].comments.length; j++) {
+        '<ul>' +
+            '<li>' + 'username: ' + posts[i].comments[j].username + 'post:' + posts[i].comments[j].post + '</li>' + 
+        '</ul>'
+    }
+}
 
 // function to empty posts and rerender again.
 function resetList() {
@@ -16,49 +27,41 @@ function resetList() {
     for(var i = 0; i < posts.length; i++) {
     $('.posts').append('<p class="post" data-id=' + posts[i].id +'>' 
     + '<button type="button" class="remove">' + 'REMOVE' + 
-    '</button>' + posts[i].text + 
+    '</button>' + posts[i].text  + 
     //comments section:
-    '<form>' + "Username: " + '<input type="text" name="username" id="username">' + 
+    "Username: " + '<input type="text" name="username" id="username">' + 
     "Comment" + '<input type="text" name="comment" id="comment">'
     +
-    '<button type="button" class="add-comment">' + 'Comment' + '</button>' + '</form>'    
-    + '</p>')
+    '<button type="button" class="add-comment">' + 'Comment' + '</button>' + '</p>'
+    // + addComment(i)
+    )
     }
 }
 
+
+// when we click "add" -> get the text + assign unique id then push it to array -> post on site)
+$('.add-post').click(function() {
+    newPost = {text: $('#post-name').val(), id: postid++, comments: []};
+    posts.push(newPost);
+    resetList()
+})
 // when click remove for one post -> delete it and render
 
 $('.posts').on('click','.remove', function() {
 // get post id
-    removeItemNum = $(this).parent().data();
-    // loop through posts to find matching id
-    for(var i = 0; i < posts.length; i++) {
-        if(removeItemNum.id == posts[i].id) {
-        posts.splice(i,1);
-        resetList()
-    }}}
-)
-
-// Add a feature that allows each post to receive a comment. 
-// Each post will require it's own form, allowing a user to leave their username and some kind of comment text. 
-// List all the comments and associated users below the post.
-
-$('.posts').on('click','.add-comment', function(){
-    console.log("hey")
-    lastComment = ({post: $('#comment').val(), username: $('#username').val()});
-    postIsFrom = $(this).parent().data();
-    console.log(postIsFrom);
+    removeItemNum = $(this).parent('.post').data().id;
+    i = findPost(removeItemNum)
+    posts.splice(i,1)
+    resetList()
 })
 
 
-/*
-postFor = $(this).find('p.post').data();
-    find('p.post').data())
 
-
-
-    posts[postFor].comment = ({post: $('#comment').val(), username: $('#username').val()})
-    resetList()
-    */
-
+// On click of comment button -> get values -> push to array -> render !
+$('.posts').on('click','.add-comment', function(){
+    postIsFrom = $(this).closest('p').data().id;   
+    lastComment = ({post: $('#comment').val(), username: $('#username').val()});            
+    findPost(postIsFrom).comments.push(lastComment)
+        }       
+)
 
