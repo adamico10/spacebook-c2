@@ -108,6 +108,3 @@ $('.posts').on('click', '.remove', function () {
 $('.posts').on('click','.show-comments', function () {
   app.toggleComments(this);
 });
-
-// more git project
-// pull request testing

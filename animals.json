@@ -1,0 +1,73 @@
+{
+  "name": "Cattle",
+  "weight": {
+    "nominal": 753,
+    "unit":"kilos"
+  },
+  "residance": {
+    "country": "india"
+  },
+  "endangered": "no",
+  "food": {
+      "fooditeats": "plants",
+      "namesofanimalsiteats": ""
+  },
+  "delicious": "1"
+}
+
+
+,{
+    "name": "Elephant",
+    "weight": {
+      "nominal": 2000,
+      "unit":"kilos"
+    },
+    "residance": {
+      "country": "africa"
+    },
+    "endangered": "yes",
+    "food": {
+        "fooditeats": "vegetiables",
+        "namesofanimalsiteats": ""
+    },
+    "delicious": "1"
+  },
+
+  {
+        "name": "Gray wolf",
+        "weight": {
+          "nominal": 40,
+          "unit":"kilos"
+        },
+        "residance": {
+          "country": "canada"
+        },
+        "endangered": "no",
+        "food": {
+            "fooditeats": "ungulates and large hoofed mammals",
+            "namesofanimalsiteats": "elk, deer, moose, caribou, beaver, rabbits and other small prey"
+        },
+        "delicious": "0"
+      }
+      
+  
+      {
+        "name": "Squirrel",
+        "weight": {
+          "nominal": 2,
+          "unit":"kilos"
+        },
+        "residance": {
+          "country": "USA"
+        },
+        "endangered": "no",
+        "food": {
+            "fooditeats": "plants and meat",
+            "namesofanimalsiteats": "eggs, small insects, caterpillars, small animals and even young snakes."
+        },
+        "delicious": "2"
+      }
+      
+  
+  
+
